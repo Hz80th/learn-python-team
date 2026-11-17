@@ -90,3 +90,15 @@ def test_dictionary_update_and_get():
 
     # get() returns a default value for a missing key.
     assert student.get('missing', 'N/A') == 'N/A'
+
+
+def test_dictionary_pop():
+    """Demonstrate removing a key and returning its value."""
+    scores = {'Alice': 90, 'Bob': 85}
+
+    # Remove Bob and return the associated score.
+    removed_score = scores.pop('Bob')
+
+    assert removed_score == 85
+    assert 'Bob' not in scores
+    assert len(scores) == 1
