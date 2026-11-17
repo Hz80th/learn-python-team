@@ -123,6 +123,11 @@ def test_list_methods():
     assert fruits.count('tangerine') == 0
     assert fruits.count('banana') == 2
 
+    # Membership test with the in and not in operators.
+    # They check whether a value is in the list without changing it.
+    assert 'kiwi' in fruits
+    assert 'mango' not in fruits
+
     # list.copy()
     # Return a shallow copy of the list. Equivalent to a[:].
     fruits_copy = fruits.copy()
