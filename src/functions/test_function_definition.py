@@ -64,7 +64,7 @@ def test_function_definition():
     # lot of useful stuff with them.
 
     # Assign functions to variables.
-    
+
 
 def test_function_default_parameters():
     """Demonstrate default and keyword function parameters."""
@@ -140,3 +140,21 @@ def test_function_default_parameters():
     assert greet_with_closure() == 'Hello there, John!'
 
 
+
+def test_function_return_and_validation():
+    """Demonstrate return values and simple input validation."""
+
+    def calculate_average(scores):
+        if not scores:
+            return None
+
+        return sum(scores) / len(scores)
+
+    # Normal input: calculate and return an average.
+    assert calculate_average([80, 90, 100]) == 90
+
+    # A single score is also valid.
+    assert calculate_average([75]) == 75
+
+    # Invalid empty input returns None.
+    assert calculate_average([]) is None
