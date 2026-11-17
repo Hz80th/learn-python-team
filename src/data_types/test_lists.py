@@ -11,6 +11,8 @@ might contain items of different types, but usually the items all have
 the same type.
 """
 
+import copy
+
 import pytest
 
 
@@ -336,3 +338,68 @@ def test_nested_list_comprehensions():
         (3, 7, 11),
         (4, 8, 12),
     ]
+
+
+def test_list_sorting_with_key():
+    """Sorting with a key function.
+
+    sorted() returns a new sorted list and leaves the original unchanged, while
+    list.sort() sorts the list in place and returns None. Both accept a key function
+    and a reverse flag, and both are stable: items that compare equal keep their order.
+    """
+
+    words = ['banana', 'apple', 'Cherry', 'date']
+
+    # By default, uppercase letters sort before lowercase letters.
+    assert sorted(words) == ['Cherry', 'apple', 'banana', 'date']
+
+    # key=str.lower compares the words case-insensitively.
+    assert sorted(words, key=str.lower) == ['apple', 'banana', 'Cherry', 'date']
+
+    # key=len sorts by length. 'banana' and 'Cherry' both have 6 letters,
+    # so they keep their original order (the sort is stable).
+    assert sorted(words, key=len) == ['date', 'apple', 'banana', 'Cherry']
+
+    # reverse=True sorts from longest to shortest and still keeps equal items in order.
+    assert sorted(words, key=len, reverse=True) == ['banana', 'Cherry', 'apple', 'date']
+
+    # sorted() did not change the original list.
+    assert words == ['banana', 'apple', 'Cherry', 'date']
+
+    # list.sort() changes the list itself and returns None.
+    assert words.sort(key=str.lower) is None
+    assert words == ['apple', 'banana', 'Cherry', 'date']
+
+
+def test_list_copying():
+    """Assignment, shallow copies and deep copies.
+
+    Assigning a list to a new name does not copy it: both names refer to the same list.
+    A shallow copy creates a new outer list but shares the inner objects, so nested lists
+    are still shared. copy.deepcopy() copies the nested lists as well.
+    """
+
+    original = [1, 2, [3, 4]]
+
+    # Assignment: both names point to the same list object.
+    alias = original
+    alias.append(5)
+    assert original == [1, 2, [3, 4], 5]
+    assert alias is original
+
+    # Shallow copy: a new outer list, so appending to it does not affect the original.
+    shallow = original.copy()
+    shallow.append(6)
+    assert original == [1, 2, [3, 4], 5]
+    assert shallow is not original
+
+    # ...but the nested list is shared, so changing it shows up in both lists.
+    shallow[2].append('x')
+    assert original[2] == [3, 4, 'x']
+    assert shallow[2] is original[2]
+
+    # Deep copy: the nested list is copied too, so the lists are fully independent.
+    deep = copy.deepcopy(original)
+    deep[2].append('y')
+    assert original[2] == [3, 4, 'x']
+    assert deep[2] == [3, 4, 'x', 'y']
