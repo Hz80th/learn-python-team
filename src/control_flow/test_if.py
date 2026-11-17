@@ -43,3 +43,20 @@ def test_nested_if_statement():
         result = 'x is small'
 
     assert result == 'Both are large'
+
+
+def test_multiple_elif_branches():
+    """Multiple elif branches"""
+
+    temperature = -5
+
+    if temperature > 30:
+        category = 'Hot'
+    elif temperature > 15:
+        category = 'Warm'
+    elif temperature > 0:
+        category = 'Cold'
+    else:
+        category = 'Freezing'
+
+    assert category == 'Freezing'
