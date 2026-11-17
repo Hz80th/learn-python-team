@@ -27,6 +27,11 @@ def test_if_statement():
 
     assert conclusion == 'Number bigger than or equal to one'
 
+    # Chained comparison: 13 <= age <= 19 is True only when both conditions hold.
+    age = 17
+    is_teenager = 13 <= age <= 19
+    assert is_teenager
+
 
 def test_nested_if_statement():
     """Nested IF statements"""
