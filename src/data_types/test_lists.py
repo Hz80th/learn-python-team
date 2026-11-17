@@ -123,6 +123,14 @@ def test_list_methods():
     assert fruits.count('tangerine') == 0
     assert fruits.count('banana') == 2
 
+    # list.extend(iterable)
+    # Extend the list by appending all the items from the iterable.
+    # Equivalent to a[len(a):] = iterable.
+    more_fruits = fruits.copy()
+    more_fruits.extend(['mango', 'lime'])
+    assert more_fruits[-2:] == ['mango', 'lime']
+    assert len(more_fruits) == len(fruits) + 2
+
     # list.copy()
     # Return a shallow copy of the list. Equivalent to a[:].
     fruits_copy = fruits.copy()
