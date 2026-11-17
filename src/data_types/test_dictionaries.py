@@ -77,3 +77,29 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+
+def test_dictionary_update_and_get():
+    """Demonstrate updating entries and safely retrieving values."""
+    student = {'name': 'Alice', 'grade': 80}
+
+    # Update an existing key and add a new key.
+    student.update({'grade': 90, 'course': 'Python'})
+
+    assert student['grade'] == 90
+    assert student['course'] == 'Python'
+
+    # get() returns a default value for a missing key.
+    assert student.get('missing', 'N/A') == 'N/A'
+
+
+def test_dictionary_pop():
+    """Demonstrate removing a key and returning its value."""
+    scores = {'Alice': 90, 'Bob': 85}
+
+    # Remove Bob and return the associated score.
+    removed_score = scores.pop('Bob')
+
+    assert removed_score == 85
+    assert 'Bob' not in scores
+    assert len(scores) == 1
