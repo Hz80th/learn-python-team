@@ -121,3 +121,20 @@ def test_function_definition():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
+
+
+
+def test_function_default_parameters():
+    """Demonstrate default and keyword function parameters."""
+
+    def greet(name, greeting='Hello'):
+        return greeting + ', ' + name + '!'
+
+    # Uses the default value of greeting.
+    assert greet('Alice') == 'Hello, Alice!'
+
+    # Overrides the default value.
+    assert greet('Bob', 'Hi') == 'Hi, Bob!'
+
+    # Uses a keyword argument.
+    assert greet('Charlie', greeting='Welcome') == 'Welcome, Charlie!'
