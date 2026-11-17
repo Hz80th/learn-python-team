@@ -78,6 +78,7 @@ def test_dictionary():
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
 
+
 def test_dictionary_update_and_get():
     """Demonstrate updating entries and safely retrieving values."""
     student = {'name': 'Alice', 'grade': 80}
