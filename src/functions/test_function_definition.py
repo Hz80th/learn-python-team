@@ -65,6 +65,22 @@ def test_function_definition():
 
     # Assign functions to variables.
 
+
+def test_function_default_parameters():
+    """Demonstrate default and keyword function parameters."""
+
+    def greet(name, greeting='Hello'):
+        return greeting + ', ' + name + '!'
+
+    # Uses the default value of greeting.
+    assert greet('Alice') == 'Hello, Alice!'
+
+    # Overrides the default value.
+    assert greet('Bob', 'Hi') == 'Hi, Bob!'
+
+    # Uses a keyword argument.
+    assert greet('Charlie', greeting='Welcome') == 'Welcome, Charlie!'
+
     def greet(name):
         return 'Hello, ' + name
 
@@ -121,3 +137,22 @@ def test_function_definition():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
+
+
+def test_function_return_and_validation():
+    """Demonstrate return values and simple input validation."""
+
+    def calculate_average(scores):
+        if not scores:
+            return None
+
+        return sum(scores) / len(scores)
+
+    # Normal input: calculate and return an average.
+    assert calculate_average([80, 90, 100]) == 90
+
+    # A single score is also valid.
+    assert calculate_average([75]) == 75
+
+    # Invalid empty input returns None.
+    assert calculate_average([]) is None
