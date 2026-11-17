@@ -229,3 +229,7 @@ flake8 ./src --statistics --show-source --count
 ## Author
 
 - [@trekhleb](https://trekhleb.dev)
+
+## Team maintenance
+
+This copy of learn-python is maintained by our team for the COMP 354 Software Configuration Management assignment. Each contributor works in their own fork and submits changes to `main` through a pull request.
