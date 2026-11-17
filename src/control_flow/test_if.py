@@ -26,3 +26,37 @@ def test_if_statement():
         conclusion = 'Number bigger than or equal to one'
 
     assert conclusion == 'Number bigger than or equal to one'
+
+
+def test_nested_if_statement():
+    """Nested IF statements"""
+
+    x = 88
+    y = 99
+
+    if x > 40:
+        if y > 40:
+            result = 'Both are large'
+        else:
+            result = 'x is large, y is small'
+    else:
+        result = 'x is small'
+
+    assert result == 'Both are large'
+
+
+def test_multiple_elif_branches():
+    """Multiple elif branches"""
+
+    temperature = -5
+
+    if temperature > 30:
+        category = 'Hot'
+    elif temperature > 15:
+        category = 'Warm'
+    elif temperature > 0:
+        category = 'Cold'
+    else:
+        category = 'Freezing'
+
+    assert category == 'Freezing'
