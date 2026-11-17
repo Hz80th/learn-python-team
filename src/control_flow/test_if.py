@@ -27,6 +27,11 @@ def test_if_statement():
 
     assert conclusion == 'Number bigger than or equal to one'
 
+    # Conditional expression (ternary operator)
+    temperature = 25
+    weather = 'warm' if temperature > 20 else 'cold'
+    assert weather == 'warm'
+
     # Chained comparison: 13 <= age <= 19 is True only when both conditions hold.
     age = 17
     is_teenager = 13 <= age <= 19
