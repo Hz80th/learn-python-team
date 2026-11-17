@@ -27,12 +27,10 @@ def test_if_statement():
 
     assert conclusion == 'Number bigger than or equal to one'
 
-
     # Conditional expression (ternary operator)
     temperature = 25
     weather = 'warm' if temperature > 20 else 'cold'
     assert weather == 'warm'
-
 
 
 def test_nested_if_statement():
