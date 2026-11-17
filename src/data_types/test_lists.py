@@ -336,3 +336,34 @@ def test_nested_list_comprehensions():
         (3, 7, 11),
         (4, 8, 12),
     ]
+
+
+def test_list_sorting_with_key():
+    """Sorting with a key function.
+
+    sorted() returns a new sorted list and leaves the original unchanged, while
+    list.sort() sorts the list in place and returns None. Both accept a key function
+    and a reverse flag, and both are stable: items that compare equal keep their order.
+    """
+
+    words = ['banana', 'apple', 'Cherry', 'date']
+
+    # By default, uppercase letters sort before lowercase letters.
+    assert sorted(words) == ['Cherry', 'apple', 'banana', 'date']
+
+    # key=str.lower compares the words case-insensitively.
+    assert sorted(words, key=str.lower) == ['apple', 'banana', 'Cherry', 'date']
+
+    # key=len sorts by length. 'banana' and 'Cherry' both have 6 letters,
+    # so they keep their original order (the sort is stable).
+    assert sorted(words, key=len) == ['date', 'apple', 'banana', 'Cherry']
+
+    # reverse=True sorts from longest to shortest and still keeps equal items in order.
+    assert sorted(words, key=len, reverse=True) == ['banana', 'Cherry', 'apple', 'date']
+
+    # sorted() did not change the original list.
+    assert words == ['banana', 'apple', 'Cherry', 'date']
+
+    # list.sort() changes the list itself and returns None.
+    assert words.sort(key=str.lower) is None
+    assert words == ['apple', 'banana', 'Cherry', 'date']
