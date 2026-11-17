@@ -81,7 +81,6 @@ def test_function_default_parameters():
     # Uses a keyword argument.
     assert greet('Charlie', greeting='Welcome') == 'Welcome, Charlie!'
 
-
     def greet(name):
         return 'Hello, ' + name
 
@@ -138,7 +137,6 @@ def test_function_default_parameters():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
-
 
 
 def test_function_return_and_validation():
